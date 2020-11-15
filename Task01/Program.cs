@@ -39,20 +39,33 @@ namespace Task01
         {
             int numOfItems = int.Parse(Console.ReadLine());
             
-            int[] array;
-            // TODO: считайте массив
+            int[] array = new int[numOfItems];
+            int max = int.MinValue;
+            for (int elem = 0; elem < numOfItems; ++elem)
+            {
+                int.TryParse(Console.ReadLine(), out array[elem]);
+                if (array[elem] > max) max = array[elem];
+            }
 
-            int newValue; // значение, которым нужно заменить все максимальные элементы
-            // TODO: считайте новое значение
+            int newValue; 
+            int.TryParse(Console.ReadLine(), out newValue);
             
-            ReplaceMaxElem(ref array, newValue);
-            
-            // TODO: реализуйте вывод необходимых данных
+            foreach (int elem in array)
+                Console.Write(elem + " ");
+            Console.Write("\n");
+
+            ReplaceMaxElem(ref array, newValue, max);
+
+            foreach (int elem in array)
+                Console.Write(elem + " ");
+            Console.Write("\n");
         }
 
-        static void ReplaceMaxElem(ref int[] arr, int val)
+        static void ReplaceMaxElem(ref int[] arr, int val, int max)
         {
-            // TODO: реализуйте замену всех вхождений максимального элемента массива arr на значение val
+            for (int elem = 0; elem < arr.Length; ++elem)
+                if (arr[elem] == max)
+                    arr[elem] = val;
         }
     }
 }

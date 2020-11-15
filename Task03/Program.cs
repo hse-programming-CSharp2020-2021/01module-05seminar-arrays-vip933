@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using System.Linq.Expressions;
+using System.Runtime.InteropServices.ComTypes;
 
 /*
  * Пользователем с клавиатуры вводится целое число N > 0.
@@ -25,15 +27,17 @@ namespace Task03
         public static void RunTask03()
         {
             int N = int.Parse(Console.ReadLine());
-            
-            // TODO: инициализируйте массив и передайте его в соответствующий метод
-
-            // TODO: выведите массив на экран
+            long[] array = new long[N];
+            FillArray(ref array);
+            foreach (long elem in array)
+                Console.Write(elem + " ");
+            Console.Write("\n");
         }
 
-        static void FillArray()
+        static void FillArray(ref long[] array)
         {
-            // TODO: заполните массив соответствующими данными
+            for (int elem = 0; elem < array.Length; ++elem)
+                array[elem] = 2 * elem + 1;
         }
     }
 }
